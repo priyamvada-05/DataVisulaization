@@ -1,0 +1,41 @@
+.upload{
+	height: 100vh;
+	overflow-x: hidden;
+
+	.title{
+		font-size: 2.9rem;
+		text-align: center;
+		padding-top: 35px;
+	}
+	input[type="file"] {
+    display: none;
+
+}
+
+.md-form{
+display: flex;
+flex-wrap: wrap;
+margin-left: 105px;
+
+.file{
+
+	.new{
+	
+	}
+
+	.file-path-wrapper{
+		margin-top: 30px;
+	margin-left: 175px;
+}
+}
+}
+
+.img{
+	background-color: white;
+	margin-left: 135px;
+}
+.img1{
+	margin-top: 35px;
+	border-radius: 50px;
+}
+}

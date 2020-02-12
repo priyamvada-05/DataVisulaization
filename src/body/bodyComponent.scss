@@ -1,0 +1,23 @@
+.body{
+	height: 100vh;
+	.heading{
+		
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	padding-top: 75px;
+	align-items: center;
+	font-family: "montserrat";
+	cursor: context-menu;
+
+
+	.title{
+		font-size: 3.5rem;
+		color: white;
+	}
+	.subtitle{
+		font-size: 1.9rem;
+		color: white;
+	}
+}
+}
