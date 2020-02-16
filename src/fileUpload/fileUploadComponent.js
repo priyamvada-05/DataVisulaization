@@ -2,8 +2,20 @@ import React from 'react';
 import './fileUploadComponent.scss';
 import excelImg from '../excelLogo.jpg';
 import chartImg from '../charts.jpg';
+import { withRouter} from 'react-router-dom';
+import { connect} from 'react-redux';
+import { startGettingHeader} from '../redux/data/inBuildDataAction';
 
 class FileUploadComponent extends React.Component{
+
+	constructor(props){
+		super(props);
+	}
+
+	handleInBuildDataset=(event)=>{
+		this.props.startLoadingHeader();
+		this.props.history.push('/inbuildDataset');
+	}
 
 	render(){
 		return(
@@ -25,10 +37,16 @@ class FileUploadComponent extends React.Component{
 					  </div>
 					</form>
 					<img className='img' src={excelImg}  height='250' width='300'/>
+					<div className="vl"></div>
 				</div>
 
 				  <div class="col-md-6">
-					<img className='img1' src={chartImg}  height='350' width='450'/>
+				  	<div className='inbuild'>
+
+				  		<h2 className='subTitle'>Or use the Inbuild Dataset</h2>
+					  	<button className="btn btn-primary" onClick={this.handleInBuildDataset}>Start Analysis</button>
+						<img className='img1' src={chartImg}  height='350' width='500'/>
+					</div>
 				</div>
 			</div>
 			</div>
@@ -36,4 +54,10 @@ class FileUploadComponent extends React.Component{
 	}
 }
 
-export default FileUploadComponent
+const mapDispatchToProps=(dispatch)=>{
+	return({
+		startLoadingHeader: ()=>dispatch(startGettingHeader())
+	})
+}
+
+export default withRouter(connect(null, mapDispatchToProps)(FileUploadComponent))

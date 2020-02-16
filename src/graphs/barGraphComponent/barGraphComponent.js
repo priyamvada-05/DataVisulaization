@@ -1,6 +1,5 @@
 import React from 'react';
 import * as d3 from "d3";
-import data from '../buildings.json'
 
 
 class BarGraphComponent extends React.Component {
@@ -8,16 +7,16 @@ class BarGraphComponent extends React.Component {
 constructor(props){
   super(props)
   this.myDiv = React.createRef();
+  this.data= this.props.data
   
 }
 
 componentDidMount(){
 
-  data.forEach(item=>{
-    item.height= +item.height
-  })
 
-  var margin={
+
+
+    var margin={
     left:100,
     right:10,
     top:10,
@@ -28,16 +27,16 @@ componentDidMount(){
   var width= 600 - margin.right - margin.left;
 
   const x= d3.scaleBand()
-               .domain(data.map((item)=>item.name))
+               .domain(this.data.map((item)=>item.name))
                .range([0,width])
                .paddingInner(0.3)
                .paddingOuter(0.3)
 
    const y= d3.scaleLinear()
-               .domain([0, d3.max(data,(item)=>item.height)])
+               .domain([0, d3.max(this.data,(item)=>item.value)])
                .range([0,height]);
    const myColor = d3.scaleOrdinal()
-                      .domain(data.map((item)=>item.name))
+                      .domain(this.data.map((item)=>item.name))
                       .range(d3.schemeSet3);
   
    const svg=d3.select(this.myDiv.current).append('svg')
@@ -61,7 +60,7 @@ componentDidMount(){
                  .attr("transform", `translate( ${0}, ${margin.top})`)
                  .call(yAxisCall)
 
-   const rects= g.selectAll('rect').data(data);
+   const rects= g.selectAll('rect').data(this.data);
 
   rects.enter().append('rect')
                 .attr('y', 10)
@@ -70,7 +69,7 @@ componentDidMount(){
                 })
                 .attr("width", x.bandwidth)
                 .attr("height", (item, index)=>{
-                  return y(item.height)
+                  return y(item.value)
                 })
                 .attr("fill", (item, index)=>{
                   return myColor(item.name)
@@ -78,6 +77,11 @@ componentDidMount(){
 }
 
 render(){
+
+
+
+
+
   return (
       <div ref={this.myDiv}>
       </div>

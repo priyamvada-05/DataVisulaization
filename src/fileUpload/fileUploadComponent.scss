@@ -5,7 +5,7 @@
 	.title{
 		font-size: 2.9rem;
 		text-align: center;
-		padding-top: 35px;
+		padding-top: 30px;
 	}
 	input[type="file"] {
     display: none;
@@ -34,8 +34,26 @@ margin-left: 105px;
 	background-color: white;
 	margin-left: 135px;
 }
-.img1{
+	.vl {
+  border-left: 2px solid grey;
+  height: 60vh;
+  position: absolute;
+  left: 90%;
+  top: 15%;
+  opacity: 0.5;
+}
+
+
+.inbuild{
+	display: flex;
+	flex-direction: column;
+	margin-top: 15px;
+	align-items: center;
+
+
+	.img1{
 	margin-top: 35px;
 	border-radius: 50px;
+}
 }
 }
