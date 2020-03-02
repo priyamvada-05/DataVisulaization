@@ -37,7 +37,7 @@ class BivariateAnalysisComponent extends React.Component{
 					<div className='row'>
 
 						<div className='col-md-3'>
-						<h2>Quantitative</h2>
+						<h2>Qualitative</h2>
 						</div>
 						<div className='col-md-3'>
 						      <MDBDropdown className=''>
@@ -113,7 +113,7 @@ class BivariateAnalysisComponent extends React.Component{
 					<div className='row'>
 
 						<div className='col-md-3'>
-						<h2>Qualitative</h2>
+						<h2>Quantitative</h2>
 						</div>
 						<div className='col-md-3'>
 						      <MDBDropdown>

@@ -30,7 +30,7 @@ class QuantitativrAndQualitativeComponent extends React.Component {
 				</div>
 				<div className='row new5'>
 				<div className='col-md-6'>
-				<h2 className='text'>Qualitative data</h2>
+				<h2 className='text'>Quantitative data</h2>
 				<ul>
 					{this.props.headerFromRedux.qualitative.map(item=>{
 						if(item){
@@ -46,7 +46,7 @@ class QuantitativrAndQualitativeComponent extends React.Component {
 				</ul>
 				</div>
 				<div className='col-md-6'>
-				<h2 className='text'>Quantitative data</h2>
+				<h2 className='text'>Qualitative data</h2>
 				<ul>
 					{this.props.headerFromRedux.quantitative.map(item=>{
 						if(item){
