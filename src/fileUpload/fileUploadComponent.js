@@ -270,4 +270,4 @@ const mapDispatchToProps=(dispatch)=>{
 	})
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(FileUploadComponent))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FileUploadComponent))

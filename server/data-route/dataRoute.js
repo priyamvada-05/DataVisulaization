@@ -3,15 +3,14 @@ const routes=express.Router();
 const dataUpload= require('../data-upload/dataUpload');
 const dataModelUpdated= require('../data-model/dataModelUpdated');
 
-const file=null;
+
 routes.post('/data/upLoad', (req, res)=>{
 	const {name}= req.body;
 	const data= req.body.file;	
-	file=data;
 	const dataModelUpdate= new dataModelUpdated({name, data})
 	dataModelUpdate.save().then((status)=>{
 		console.log(status)
-
+		res.send({success:'ok'})
 	}).catch((err)=>{
 		console.log(err)
 	})
@@ -340,8 +339,9 @@ routes.post('/data/tableHeader', async (req, res)=>{
 
 routes.post('/data/tableValue', async (req, res)=>{
 
+const {name, startValue}=req.body;
 const size=await dataModelUpdated.aggregate([
-		 {$match:{name:'data.csv'}},
+		 {$match:{name:name}},
 		 {$unwind:{path:'$data'}},
 		 {$project:{
 		 	_id:0,
@@ -353,7 +353,7 @@ const size=await dataModelUpdated.aggregate([
 
 	const length=size[0]['length']
 
-	const {name, startValue}=req.body;
+	
 	var stopValue=null;
 	const limit=Math.trunc(length/4);
 
