@@ -1,5 +1,6 @@
 .body{
 	height: 100vh;
+	z-index: -1;
 	.heading{
 		
 	display: flex;
@@ -7,17 +8,88 @@
 	flex-direction: column;
 	padding-top: 75px;
 	align-items: center;
-	font-family: "montserrat";
 	cursor: context-menu;
-
-
-	.title{
-		font-size: 3.5rem;
-		color: white;
+	
+	.wrap{
+		display: flex;
+		flex-direction: row;
+		margin-top: 35px;
+		
+		.title{
+		
+    	white-space: nowrap;
+		line-height: 100px;
+		font-size: 70px;
+		font-weight: 800;
+		color: black;
+		letter-spacing: 0px;
+    visibility: inherit;
+    text-transform: uppercase;
 	}
+	.title1{
+		color: #0cf;
+	}
+	}
+
+	.img1{
+		animation: spin 10s linear infinite;
+		position: absolute;
+		top: 25%;
+		right:88%;
+	}
+		.img2{
+		  animation: shimmy 3s infinite;
+  		  animation-direction: alternate;
+  		  position: absolute;
+		top: 25%;
+		left: 80%;
+		opacity: 0.7;
+
+	}
+
+	.img3{
+		opacity: 0.5;
+		position: absolute;
+		top:55%;
+		left:35%;
+		animation: spin 35s linear infinite;
+	}
+
+	.img4{
+		margin-right: 10px;
+		animation: grow 5s alternate infinite;
+	}
+
+		@keyframes grow{
+		0%{
+			transform: scale(1);
+		}
+		100%{
+			transform: scale(1.18);
+		}
+	}
+
+	@keyframes spin{
+		0%{
+			transform: rotate(0deg);
+		}
+		100%{
+			transform: rotate(360deg);
+		}
+	}
+
+	@keyframes shimmy {
+	  0% {
+	    transform: translate(15px, 45px); 
+	  }
+	  100% {
+	    transform: translate(25px, 15px);
+	  }
+	}
+
 	.subtitle{
 		font-size: 1.9rem;
-		color: white;
+		color: black;
 	}
 }
 }

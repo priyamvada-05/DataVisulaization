@@ -4,16 +4,26 @@ import QuantitativeAndQualitativeComponent from './quantitativeAndqualitativeCom
 import QuantitativeComponent from './quantitativeComponent/quantitativeComponent';
 import { connect} from 'react-redux'
 import QualitativeComponent from './qualitativeComponent/qualitativeComponent';
+import BivariateAnalysisComponent from './bivariateAnalysis/bivariateAnalysisComponent';
+import GeographicalChartComponent from './geographicalChart/geographicalChartComponent';
+import TableComponent from './table/tableComponent';
+import { startGettingTableHeader, startGettingTableColumn} from '../redux/data/inBuildDataAction';
+import { LoaderOverlay, LoaderContainer} from './loading-page-component/loadingStylesComponent';
 
 
 class InBuildDataset extends React.Component {
 
+	componentDidMount(){
+		this.props.startLoadingHeader({name: this.props.datasetName})
+		this.props.startLoadingColumn({name: this.props.datasetName, startValue: this.props.startValue})	
+	
+	}
 
 	render(){
 
 	return(
 		<div className='new'>
-			<QuantitativeAndQualitativeComponent />
+			<QuantitativeAndQualitativeComponent/> 
 			{!this.props.loading?
 			(<div className=''>
 			{this.props.loadingQuantitativeDataFromRedux?
@@ -26,9 +36,21 @@ class InBuildDataset extends React.Component {
 			:null
 			}
 			</div>)
-			:null
+			:(	<LoaderOverlay>
+							<LoaderContainer />
+				</LoaderOverlay>)
 		}
-		}
+		
+		<BivariateAnalysisComponent className='bivariate'/>
+		{!this.props.loading?
+		(
+		 <div className=''>
+			<GeographicalChartComponent />
+			<TableComponent />
+		 </div>
+		 )
+		:null}
+		
 		</div>
 		)
 }
@@ -38,8 +60,17 @@ const mapStateToProps=(rootReducer)=>{
 	return({
 		loadingQualitativeDataFromRedux: rootReducer.inBuildData.loadingQualitativeData,
 		loadingQuantitativeDataFromRedux: rootReducer.inBuildData.loadingQuantitativeData,
-		loading:rootReducer.inBuildData.loading
+		loading:rootReducer.inBuildData.loading,
+		datasetName: rootReducer.inBuildData.datasetName,
+		startValue: rootReducer.inBuildData.startLimit
 	})
 }
 
-export default connect(mapStateToProps)(InBuildDataset)
+const mapDispatchToProps= (dispatch)=>{
+	return({
+		startLoadingHeader:(limitObj)=>dispatch(startGettingTableHeader(limitObj)),
+		startLoadingColumn:(limitObj)=> dispatch(startGettingTableColumn(limitObj))
+	})
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(InBuildDataset)

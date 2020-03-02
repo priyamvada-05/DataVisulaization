@@ -9,6 +9,8 @@ import PageComponent from './page/pageComponent'
 import { PersistGate} from 'redux-persist/integration/react';
 import { Provider} from 'react-redux';
 import {store, persistor} from './redux/store';
+import ReactImg from './assets/landing.jpg';
+
 
 class App extends React.Component {
 
@@ -19,7 +21,11 @@ render(){
   <Provider  store={store}>
     <BrowserRouter>
 	<PersistGate persistor={persistor}>
+		<div className='new' style={{
+			backgroundImage: `url(${ReactImg})`
+		}} >
       <PageComponent />
+		</div>
     </PersistGate>
    </BrowserRouter>
   </Provider>

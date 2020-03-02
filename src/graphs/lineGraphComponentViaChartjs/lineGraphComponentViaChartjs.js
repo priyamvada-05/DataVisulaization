@@ -50,9 +50,7 @@ class LineGraphComponent extends React.Component{
 	render(){
 
 		return(
-			<div className='container' style={{ height:'30', width:'80vw'}} >
 			<canvas className='chart' ref={this.chartRef} />
-			</div>
 			)
 	}
 }

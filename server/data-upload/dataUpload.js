@@ -1,3 +1,5 @@
+const express=require('express');
+const routes=express.Router();
 const fs = require('fs');
 const master= require('papaparse');
 const GenerateSchema = require('generate-schema');
@@ -5,7 +7,7 @@ const GenerateSchema = require('generate-schema');
 var schema={};
 var excel=null;
 
-const file = fs.readFileSync('data.csv', 'utf8');
+/*const file = fs.readFileSync('data.csv', 'utf8');
 master.parse(file, {
 	      header: true,
 	      dynamicTyping: true,
@@ -14,6 +16,6 @@ master.parse(file, {
 	      	schema = GenerateSchema.json(file.data[0])
 	      	console.log(schema)
       }
-    })
+    })*/
 
  module.exports= {schema, excel}

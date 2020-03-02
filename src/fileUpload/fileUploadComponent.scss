@@ -1,6 +1,107 @@
 .upload{
-	height: 100vh;
+	height: 200vh;
 	overflow-x: hidden;
+
+	.row1{
+		height: 100vh;
+	}
+
+	.row2{
+
+		height: 100vh;
+
+		.demo{
+			display: flex;
+			margin-top: 155px;
+			align-items: center;
+			flex-direction: column;
+
+			.demonew{
+				display: flex;
+				flex-direction: row;
+			}
+			.demo-btn{
+
+				width: 50%;
+			}
+			.demoimg{
+				margin-top: 15px;
+				animation: grow 5s alternate infinite;
+			}
+
+			
+		@keyframes grow{
+		0%{
+			transform: scale(1.08);
+		}
+		100%{
+			transform: scale(1.18);
+		}
+	}
+		}
+	}
+.tweetR{
+	position: absolute;
+	top: 10%;
+	left:60%;
+	animation: spin 3s alternate infinite;
+	}
+	.tweetL{
+		position: absolute;
+		top: 6%;
+		right:150%;
+		animation: spin 3s alternate infinite;
+	}
+		@keyframes spin{
+		0%{
+			transform: rotate(0deg);
+		}
+		100%{
+			transform: rotate(-50deg);
+		}
+	}
+
+.info{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding-left: 90px;
+	margin-top: 35px;
+.title1{
+	margin-top: 65px;
+	display: flex;
+	flex-wrap: wrap;
+	width: 70%;
+    text-align: right;
+	.text{
+		text-transform: uppercase;
+		font-size: 65px;
+		font-weight: 500;
+		color: black;
+		letter-spacing: 0px;
+		color: #0cf;
+
+		.sub{
+			color: black !important;
+		}
+		.sub1{
+			color: #0cf;
+		}
+
+	}
+}
+}
+
+@keyframes blink {
+    from, to { 
+        border-color: transparent 
+    }
+    50% { 
+        border-color: orange; 
+    }
+}
+
+
 
 	.title{
 		font-size: 2.9rem;
@@ -11,22 +112,108 @@
     display: none;
 
 }
+.imgC{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
 
+	.img1{
+	margin-top: 15px;
+	animation: shake 0.6s infinite;
+	opacity: 0.8;
+	margin-right: 15px;
+
+	&:hover{
+		transform: rotateY(0deg);
+		animation: noSpin 15s linear infinite;
+	}
+}
+.side{
+	margin-top: 35px;
+	color: green;
+	display: flex;
+	flex-direction: column;
+	align-items:  flex-start;
+	p{
+		font-weight: 350;
+	}
+}
+
+.imgline{
+	animation: npSpin 0.6s infinite;
+}
+}
+.new1{
+	margin-top: 250px;
+}
+
+@keyframes shake{
+	0%{
+		transform: translate(0px, 0px) rotate(0deg);
+	}
+
+	25%{
+		transform: translate(1px, 1px) rotate(1deg);
+	}
+
+	50%{
+		transform: translate(-1px, -1px) rotate(-1deg);
+	}
+
+	75%{
+		transform: translate(2px, -1px) rotate(2deg);
+	}
+
+	100%{
+		transform: translate(-1px, 1px) rotate(-1deg);
+	}
+}
+
+@keyframes noSpin{
+	from{
+		transform: rotateY(0deg);
+	}
+	to{
+		transform: rotateY(0deg);
+	}
+}
+
+
+
+@keyframes spin3D{
+	from{
+		transform: rotateY(0deg);
+	}
+	to{
+		transform: rotateY(360deg);
+	}
+}
+.form{
+	margin-top: 55px;
 .md-form{
 display: flex;
 flex-wrap: wrap;
 margin-left: 105px;
 
 .file{
-
+	display: flex;
+	flex-direction: row;
 	.new{
-	
+		height: 45px;
+		overflow-y: hidden;
+		margin-top: 15px;
 	}
 
 	.file-path-wrapper{
 		margin-top: 30px;
 	margin-left: 175px;
 }
+}
+}
+.mesg{
+	margin-top: 15px;
+	padding-left: 15px;
+	color: red;
 }
 }
 
@@ -38,9 +225,9 @@ margin-left: 105px;
   border-left: 2px solid grey;
   height: 60vh;
   position: absolute;
-  left: 90%;
+  left: 100%;
   top: 15%;
-  opacity: 0.5;
+  opacity: 0.3;
 }
 
 

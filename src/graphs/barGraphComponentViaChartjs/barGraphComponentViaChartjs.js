@@ -35,9 +35,9 @@ class BarGraphComponent extends React.Component{
 	    data: {
 	      labels: labels,
 	      datasets: [{
-	       label: 'Churn',
+	       label: this.props.name,
 	        data: dataBar,
-	       backgroundColor: 'rgb(0, 204, 255, 0.3)'
+	       backgroundColor: [ '#FFC5CB',, '#EE98FF', '#AC98FF', '#98C5FF','#FFAA98', '#FCFF98', '#D0FF98', '#98FFCB', '#98FFE9']
 	      }]
 	    },
 	    option:{
@@ -53,9 +53,9 @@ class BarGraphComponent extends React.Component{
 	render(){
 
 		return(
-			<div className='container' style={{ height:'30', width:'80vw'}} >
+
 			<canvas className='chart' ref={this.chartRef} />
-			</div>
+
 			)
 	}
 }
