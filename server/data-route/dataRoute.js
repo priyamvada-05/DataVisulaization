@@ -421,7 +421,7 @@ routes.post('/data/bivariareBoxPlot', async (req, res)=>{
 			var newQuery={};
 			newQuery[query] = item;
 			const dataItemArray= await dataModelUpdated.aggregate([
-				 {$match:{name: 'data.csv'}},
+				 {$match:{name: name}},
 				 {$unwind: {path: '$data'}},
 				 {$match: newQuery},
 				 {$group: {_id: '$_id', list : {$push: queryColName2}}},
