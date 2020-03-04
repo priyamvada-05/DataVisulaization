@@ -6,7 +6,7 @@ import { withRouter} from 'react-router-dom';
 import { connect} from 'react-redux';
 import { startGettingHeader, startUploadingData, updateDatasetName} from '../redux/data/inBuildDataAction';
 import ParsePower from 'papaparse';
-import lineChart from '../assets/lineChart.jpg';
+import lineChart from '../assets/lineChart.png';
 import Typewriter from 'typewriter-effect';
 import tweetR from '../assets/tweets.png';
 import tweetL from '../assets/tweet1.png';
