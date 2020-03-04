@@ -49,7 +49,11 @@ class QuantitativrAndQualitativeComponent extends React.Component {
 				<h2 className='text'>Qualitative data</h2>
 				<ul>
 					{this.props.headerFromRedux.quantitative.map(item=>{
-						if(item){
+						if(item && !item.toLowerCase().includes('state') 
+							&& !item.toLowerCase().includes('name')
+							&& !item.toLowerCase().includes('phone')
+							&& !item.toLowerCase().includes('country')
+							&& !item.toLowerCase().includes('region')){
 							return(<button onClick={()=> {
 								this.props.setQuantitativeColnameInRedux(item)
 								this.props.startLoadingQuantitativeDataAsyncRedux({

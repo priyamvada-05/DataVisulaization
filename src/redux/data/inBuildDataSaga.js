@@ -1,5 +1,5 @@
 import { takeEvery, call, put, takeLatest} from 'redux-saga/effects';
-import {successfulGettingHeader, errorGettingHeader, successfulGettingQuantitativeDataWildcardColumn, errorGettingQuantitativeDataWildcardColumn, successfulGettingQualitativeDataWildcardColumn, errorGettingQualitativeDataWildcardColumn, successfulGettingBivariateQuantitativeData, errorGettingBivariateQuantitativeData, successfulGettingBivariateQualitativeData, errorGettingBivariateQualitativeData, successfulUploadingDataToMongoDB, errorUploadingDataToMongoDB, successfulGettingGeographicalData, errorGettingGeographicalData, successfulGettingTableHeader, errorGettingTableHeader, successfulGettingTableColumn, errorGettingTableColumn, successfulGettingBivariateBoxPlotData, errorGettingBivariateBoxPlotData} from './inBuildDataAction';
+import {successfulGettingHeader, errorGettingHeader, successfulGettingQuantitativeDataWildcardColumn, errorGettingQuantitativeDataWildcardColumn, successfulGettingQualitativeDataWildcardColumn, errorGettingQualitativeDataWildcardColumn, successfulGettingBivariateQuantitativeData, errorGettingBivariateQuantitativeData, successfulGettingBivariateQualitativeData, errorGettingBivariateQualitativeData, successfulUploadingDataToMongoDB, errorUploadingDataToMongoDB, successfulGettingGeographicalData, errorGettingGeographicalData, successfulGettingTableHeader, errorGettingTableHeader, successfulGettingTableColumn, errorGettingTableColumn, successfulGettingBivariateBoxPlotData, errorGettingBivariateBoxPlotData, successfulGettingStateGeoData, errorGettingStateGeoData} from './inBuildDataAction';
 
 export function* getHeaderFromMongoDB(){
 	yield takeEvery('START_GETTING_HEADER_FROM_MONGODB', StartLoadinginBuildDataHeaderAsync)
@@ -253,5 +253,29 @@ function* startGettingBivariateBoxPlotDataFromMongoDBAsync({payload}){
 	}
 	catch(err){
 		yield put(errorGettingBivariateBoxPlotData(err))
+	}
+}
+
+export function* getStateGeoDataFromMongoDB(){
+
+	yield takeLatest('START_GETTING_STATE_GEO_DATA_FROM_MONGODB', startGettingStateGeoDataFromMongoDBAsync)
+}
+
+function* startGettingStateGeoDataFromMongoDBAsync({payload}){
+	try{
+
+		const response= yield fetch('/api/v1/application/data/stateVisualization', {
+			method: 'POST',
+			headers :{
+				'Content-Type': 'application/json'
+				},
+			body: JSON.stringify(payload)
+		});
+		const data= yield response.json();
+
+		yield put(successfulGettingStateGeoData(data))
+	}
+	catch(err){
+		yield put(errorGettingStateGeoData(err))
 	}
 }

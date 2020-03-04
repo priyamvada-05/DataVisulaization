@@ -6,7 +6,7 @@ import { withRouter} from 'react-router-dom';
 import { connect} from 'react-redux';
 import { startGettingHeader, startUploadingData, updateDatasetName} from '../redux/data/inBuildDataAction';
 import ParsePower from 'papaparse';
-import lineChart from '../assets/lineChartd.png';
+import lineChart from '../assets/lineChart.jpg';
 import Typewriter from 'typewriter-effect';
 import tweetR from '../assets/tweets.png';
 import tweetL from '../assets/tweet1.png';
@@ -231,8 +231,8 @@ class FileUploadComponent extends React.Component{
 				   <ScrollAnimation animateIn='zoomInRight' animateOut='bounceOutLeft'>
 				  	<div className='demo'>
 				  	<div className='newdemo'>
-				  	<button className="btn btn-primary demo-btn" onClick={this.handleInBuildDatasetGeo}>Start Analysis (Demo 1)</button>
-					<button className="btn btn-primary demo-btn" onClick={this.handleInBuildDatasetNonGeo}>Start Analysis (Demo 2)</button>
+				  	<button className="btn btn-primary demo-btn" onClick={this.handleInBuildDatasetNonGeo}>Start Analysis (Demo 1)</button>
+					<button className="btn btn-primary demo-btn" onClick={this.handleInBuildDatasetGeo}>Start Analysis (Demo 2)</button>
 					</div>
 
 					<div className=''>

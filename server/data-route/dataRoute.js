@@ -2,6 +2,7 @@ const express=require('express');
 const routes=express.Router();
 const dataUpload= require('../data-upload/dataUpload');
 const dataModelUpdated= require('../data-model/dataModelUpdated');
+const normalize = require('array-normalize')
 
 
 routes.post('/data/upLoad', (req, res)=>{
@@ -50,7 +51,8 @@ const getQQdata= async (name)=>{
 					})
 			}
 
-			if(typeof(distinct[0]) === 'string' && !colName.toLowerCase().includes('name')){
+			if(typeof(distinct[0]) === 'string' && !colName.toLowerCase().includes('name')
+				&& !colName.toLowerCase().includes('name') ){
 				//catagorical
 				return({
 						quantitative: colName
@@ -279,10 +281,10 @@ routes.post('/data/qualitative/bivariate', async (req, res)=>{
 
 routes.post('/data/geographical', async (req, res)=>{
 
-	const { colName1, name} = req.body;
+	const { colName1, name, geo} = req.body;
 	console.log('name')
 	console.log(name)
-	 //var country= `$data.${name}`
+	 var country= `$data.${geo}`
 	 var sum=`$data.${colName1}`
 
 	const data = await dataModelUpdated.aggregate([
@@ -292,7 +294,7 @@ routes.post('/data/geographical', async (req, res)=>{
 	 	{$unwind: "$data"},
 	 	{
 	 		$group:{
-	 			_id:'$data.country',
+	 			_id:country,
 	 			Total:{
 	 				$sum:sum
 	 			}
@@ -439,5 +441,44 @@ routes.post('/data/bivariareBoxPlot', async (req, res)=>{
 		const data= await Promise.all(resData)
 		res.send(data)
 	})
+
+routes.post('/data/stateVisualization', async (req, res)=>{
+
+	const { name, colName, geo}= req.body;
+	const sum= `$data.${colName}`;
+	var state= `$data.${geo}`
+
+	const data= await dataModelUpdated.aggregate([
+		 {$match: {name: name}},
+		 {$unwind: {path: '$data'}},
+		 {$group: {
+		 	_id:state,
+		 	Total:{ $sum:sum
+	 			}
+		 }}
+		])
+	var dataObj={};
+	data.forEach((item)=>{
+		if(Object.values(item)[0] != null && Object.values(item)[1] != null){
+			var key= Object.values(item)[0];
+			var value= Object.values(item)[1];
+			dataObj[key]=value
+	}
+	})
+
+	const dataN=normalize(Object.values(dataObj))
+	const newKey= Object.keys(dataObj)
+
+  	const resObj= {}
+  	dataN.forEach((item, index)=>{
+  		var newKeyRes= newKey[index] 
+  		resObj[newKeyRes]= item
+  	})
+
+
+
+	res.send(resObj)
+
+})
 
 module.exports=routes;

@@ -293,3 +293,31 @@ export const updateBivariateChoose6=(colName)=>{
 		payload: colName
 	})
 }
+
+export const startGettingStateGeoData=(colNameObj)=>{
+	return({
+		type: 'START_GETTING_STATE_GEO_DATA_FROM_MONGODB',
+		payload: colNameObj
+	})
+}
+
+export const successfulGettingStateGeoData=(data)=>{
+	return({
+		type: 'SUCCESSFUL_GETTING_STATE_GEO_DATA_FROM_MONGODB',
+		payload: data
+	})
+}
+
+export const errorGettingStateGeoData=(error)=>{
+	return({
+		type: 'ERROR_GETTING_STATE_GEO_DATA_FROM_MONGODB',
+		payload: error
+	})
+}
+
+export const updateStateGeographicalChoose=(colName)=>{
+	return({
+		type:'UPDATE_STATE_GEO_CHOOSE',
+		payload: colName
+	})
+}

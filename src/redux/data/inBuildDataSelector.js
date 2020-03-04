@@ -67,4 +67,14 @@ export const inBuildDataGeographicalData= createSelector(
 	(inBuildData)=> inBuildData.geograhicalData
 	)
 
+export const inBuildDataStateGeoChoose= createSelector(
+	[inBuildDataState],
+	(inBuildData)=> inBuildData.stateGeoChose
+	)
+
+export const inBuildDataStateGeographicalData= createSelector(
+	[inBuildDataState],
+	(inBuildData)=> inBuildData.stateGeoData
+	)
+
 

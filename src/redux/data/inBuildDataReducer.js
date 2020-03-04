@@ -44,7 +44,11 @@ const INITIAL_STATE={
 	bivariateBoxPlotError:null,
 	bivariateChose5: null,
 	bivariateChose6: null,
-	loaded:false
+	loaded:false,
+	loadingStateGeo:false,
+	stateGeoData:null,
+	errorStateGeoData: null,
+	stateGeoChose: null
 }
 
 const inBuildDataReducer=(state= INITIAL_STATE, action)=>{
@@ -335,6 +339,33 @@ const inBuildDataReducer=(state= INITIAL_STATE, action)=>{
 				...state,
 				bivariateChose6:action.payload
 			})
+
+		case 'START_GETTING_STATE_GEO_DATA_FROM_MONGODB':
+			return({
+				...state,
+				loadingStateGeo: true
+			})
+
+		case 'SUCCESSFUL_GETTING_STATE_GEO_DATA_FROM_MONGODB':
+			return({
+				...state,
+				loadingStateGeo:false,
+				stateGeoData:action.payload
+			})
+
+		case 'ERROR_GETTING_STATE_GEO_DATA_FROM_MONGODB':
+			return({
+				...state,
+				loadingStateGeo:false,
+				errorStateGeoData:action.payload
+			})
+
+		case 'UPDATE_STATE_GEO_CHOOSE':
+			return({
+				...state,
+				stateGeoChose:action.payload
+			})
+
 
 		default: 
 			return state
