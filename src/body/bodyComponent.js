@@ -3,7 +3,6 @@ import './bodyComponent.scss';
 import LandingCircle from '../assets/landingCircle.png';
 import barChart from '../assets/barChartd.png';
 import pieChart from '../assets/pieChartd.png';
-import lineChart from '../assets/lineChartdd.png';
 import landingNew from '../assets/landingnew.png';
 import { connect} from 'react-redux';
 import { startCleaningReducerData} from '../redux/data/inBuildDataAction';
