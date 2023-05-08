@@ -20,7 +20,7 @@
     "express": "^4.17.1",
     "generate-schema": "^2.6.0",
     "mdbreact": "^4.25.2",
-    "mongoose": "^5.8.11",
+    "mongoose": "^5.13.15",
     "node-sass": "^4.13.1",
     "papaparse": "^5.1.1",
     "react": "^16.12.0",
